@@ -26,6 +26,10 @@ const DEFAULT_OPTIMIZATIONS = {
 	namedModules: false,
 };
 
+const NO_EMIT_ON_ERRORS_OPTIMIZATIONS = {
+	noEmitOnErrors: false
+};
+
 describe("TestCases", () => {
 	const casesPath = path.join(__dirname, "cases");
 	let categories = fs.readdirSync(casesPath);
@@ -146,7 +150,7 @@ describe("TestCases", () => {
 								target: "async-node",
 								devtool: config.devtool,
 								mode: config.mode || "none",
-								optimization: config.mode ? { noEmitOnErrors: false } : Object.assign({}, config.optimization, DEFAULT_OPTIMIZATIONS),
+								optimization: config.mode ? NO_EMIT_ON_ERRORS_OPTIMIZATIONS : Object.assign({}, config.optimization, DEFAULT_OPTIMIZATIONS),
 								performance: {
 									hints: false
 								},
